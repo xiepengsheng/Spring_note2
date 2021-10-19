@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <bean id="hello" class="com.xieps.spring.hello.pojo.Hello">
+        <property name="str" value="test1111..."/>
+    </bean>
+
+    <bean id="userDaoImpl" class="com.xieps.spring.hello.dao.impl.UserDaoImpl"/>
+
+    <bean id="userMySqlDaoImpl"
+          class="com.xieps.spring.hello.dao.impl.UserMySqlDaoImpl"/>
+
+    <bean id="userServiceImpl" class="com.xieps.spring.hello.service.impl.UserServiceImpl">
+        <!--注意:
+        这里的name并不是属性 ,
+        而是set方法后面的那部分 , 首字母小写-->
+        <!--引用另外一个bean , 不是用value 而是用 ref-->
+<!--        <property name="userDao" ref="userDaoImpl"/>-->
+        <property name="userDao" ref="userMySqlDaoImpl"/>
+
+    </bean>
+
+
+</beans>
